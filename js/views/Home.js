@@ -18,8 +18,6 @@ export default function Home() {
         ${Header()}
         <main>
             <h1>${title}</h1>
-            <a href="#/page">Other page</a>
-
             <section class="chat-wrapper">
                 <div class="chat-container">
                     <section class="messages"></section>
