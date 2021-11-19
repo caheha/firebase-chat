@@ -54,7 +54,6 @@ export default class App {
         const userDoc = await getDoc(userRef);
        
         if (!userDoc.exists()) {
-            console.log('creating new user')
             let newUser = {
                 name: this.user.displayName,
                 img: this.user.photoURL
@@ -86,7 +85,6 @@ export default class App {
 
             if (author == prevAuthor) {
                 let messages = document.querySelectorAll('.message-text');
-                console.log('all messages', messages);
                 messages[messages.length - 1].innerHTML += `<p>${message.content}</p>`;
             } else {
                 const messageElement = document.createElement('div');
@@ -121,10 +119,6 @@ export default class App {
         addDoc(this.messagesRef, newMessage);
     }
 
-    appendUserData(user) {
-        
-    }
-
     login() {
         signInWithPopup(this.auth, this.provider)
             .then((result) => {
@@ -133,7 +127,6 @@ export default class App {
                 // The signed-in user info.
                 this.user = result.user;
                 this.userLoggedIn = true;
-                console.log('Login successful');
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -148,7 +141,6 @@ export default class App {
         signOut(this.auth)
             .then(() => {
                 this.userLoggedIn = false;
-                console.log('Sign out successful');
             }).catch((error) => {
                 console.log(error);
             });
