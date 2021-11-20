@@ -205,9 +205,31 @@ main {
     display: flex;
     align-items: flex-end;
     font-weight: 600;
+    margin-left: 0.25em;
 }
 
-.message-text { grid-area: message-text; }
-.message-text p {
-    margin-bottom: 0.25em;
+.message-text { 
+    grid-area: message-text;
+    
+}
+.message-text > div {
+    padding: 0.25em;
+    position: relative;
+}
+
+.message-text > div:hover {
+    background-color: rgba(0, 0, 0, 0.05)
+}
+
+.message-text .delete-button {
+    position: absolute;
+    right: 0.25em;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    cursor: pointer;
+}
+
+.message-text > div:hover > .delete-button {
+    display: block;
 }

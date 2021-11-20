@@ -3,4 +3,4 @@ import App from './firebase/app.js';
 
 const root = document.getElementById('root');
 export const app = new App();
-const router = new Router(root, '#/', app);
+export const router = new Router(root, '#/', app);

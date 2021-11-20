@@ -17,17 +17,18 @@ export default class Router {
     }
 
     init() {
+        this.app.init();
+
         onAuthStateChanged(this.app.auth, user => {
             if (user) {
                 this.app.userLoggedIn = true;
                 this.app.user = user;
                 this.app.createUser();
                 this.render();
-                this.app.updateDOM();
             } else {
                 this.app.userLoggedIn = false;
                 this.app.user = undefined;
-                this.app.updateDOM();
+                this.render();
                 this.navigateTo('#/');
             }
         });
@@ -52,7 +53,6 @@ export default class Router {
             } else {
                 document.title = route.title;
                 this.root.innerHTML = route.view();
-                if (route.path == '#/') this.app.updateDOM();
             }
         }
 

@@ -10,9 +10,16 @@ export default function Home() {
 
     window.keyPress = (event) => {
         if (event.keyCode == 13) {
-            app.sendMessage();
+            event.preventDefault();
+            const input = document.querySelector('.message-input');
+            if (input.value != "") {
+                app.sendMessage();
+                input.value = "";
+            }
         }
     }
+
+    app.loadChat();
 
     return /*html*/`
         ${Header()}
@@ -23,7 +30,7 @@ export default function Home() {
                     <section class="messages"></section>
                 </div>
                 <form>
-                    <input class="message-input" id="message-input" type="text" autocomplete="off" placeholder="Send message" onkeypress="keyPress(event)">
+                    <input class="message-input" onsubmit="return false" id="message-input" type="text" autocomplete="off" placeholder="Send message" onkeypress="keyPress(event)">
                 </form>
             </section>
         </main>
